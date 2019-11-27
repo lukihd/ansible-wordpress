@@ -1,0 +1,11 @@
+---
+
+- name: standard configuration
+  hosts: all
+  roles: 
+    - standard-configuration
+
+- name: install nginx
+  hosts: web_cluster
+  roles:
+    - install-nginx

@@ -1,0 +1,30 @@
+---
+
+- name: install nginx if not already
+  become: yes
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+    autoremove: yes
+
+- name: enable and restart nginx
+  become: yes
+  service:
+    name: nginx
+    enabled: yes
+    state: restarted
+
+- name: allow http protocol on firewall
+  become: yes
+  ufw:
+    rule: allow
+    port: http
+    state: enabled  
+
+- name: allow https protocol on firewall
+  become: yes
+  ufw:
+    rule: allow
+    port: https
+    state: enabled

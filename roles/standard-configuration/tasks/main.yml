@@ -1,0 +1,14 @@
+---
+
+- name: allow ssh protocol on firewall
+  become: yes
+  ufw:
+    rule: allow
+    port: ssh
+    state: enabled
+
+- name: upgrade & update
+  become: yes
+  apt:
+    upgrade: yes
+    update_cache: yes
