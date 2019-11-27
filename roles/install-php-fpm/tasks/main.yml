@@ -1,0 +1,22 @@
+---
+
+- name: install PHP-fpm
+  become: yes
+  command: "apt install php7.2 \
+   php7.2-fpm \
+   php7.2-cli \ 
+   php7.2-curl \
+   php7.2-mysql \
+   php7.2-gd \ 
+   php7.2-mbstring \ 
+   php-pear -y"
+
+- name: enable and restart PHP-fpm
+  become: yes
+  service:
+    name: php7.2-fpm
+    enabled: yes
+    state: restarted
+
+- name: check with netstat
+  command: netstat -pl | grep php

@@ -1,0 +1,25 @@
+---
+
+- name: Install MySQL server
+  become: yes
+  apt:
+    name: mysql-server
+    state: present
+    update_cache: yes
+    autoremove: yes
+
+- name: Install MySQL client
+  become: yes
+  apt:
+    name: mysql-client
+    state: present
+    update_cache: yes
+    autoremove: yes
+
+- name: enable and restart MySQL
+  become: yes
+  service:
+    name: mysql
+    enabled: yes
+    state: restarted
+

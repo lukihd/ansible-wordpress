@@ -9,3 +9,13 @@
   hosts: web_cluster
   roles:
     - install-nginx
+
+- name: install php-fpm
+  hosts: web_cluster
+  roles:
+    - install-php-fpm
+    
+- name: install mysql
+  hosts: db_cluster
+  roles:
+    - install-mysql
